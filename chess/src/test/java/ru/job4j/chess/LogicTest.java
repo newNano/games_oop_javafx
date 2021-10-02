@@ -8,21 +8,23 @@ import ru.job4j.chess.firuges.white.BishopWhite;
 
 public class LogicTest {
     @Test
-    public void move() throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
+    public void whenCorrectMove() throws FigureNotFoundException, OccupiedCellException {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.C1));
         logic.move(Cell.C1, Cell.H6);
     }
 
     @Test(expected = ImpossibleMoveException.class)
-    public void move1() throws OccupiedCellException, FigureNotFoundException, ImpossibleMoveException {
+    public void whenImpossibleMoveException()
+            throws FigureNotFoundException, ImpossibleMoveException, OccupiedCellException {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.C1));
         logic.move(Cell.C1, Cell.H5);
     }
 
     @Test (expected = OccupiedCellException.class)
-    public void move2() throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException  {
+    public void whenOccupiedCellException()
+            throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException  {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.C1));
         logic.add(new BishopWhite(Cell.G5));
@@ -30,7 +32,8 @@ public class LogicTest {
     }
 
     @Test (expected = FigureNotFoundException.class)
-    public void move3() throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException  {
+    public void whenFigureNotFoundException()
+            throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException  {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.C1));
         logic.move(Cell.D2, Cell.H6);

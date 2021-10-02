@@ -8,7 +8,6 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class BishopBlackTest {
-
     @Test
     public void position() {
         Figure figure = new BishopBlack(Cell.A1);
